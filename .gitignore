@@ -1,0 +1,10 @@
+bin/
+obj/
+Entrega_Windows/
+*.db
+*.db-shm
+*.db-wal
+*.sirasd
+.vs/
+/Entregas/
+/.worktrees/

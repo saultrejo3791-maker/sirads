@@ -1,0 +1,28 @@
+SIRASD 0.9 ESCRITORIO
+Versión de desarrollo: 0.9.7
+Fecha: 14 de septiembre de 2026
+
+ESTADO
+Base nativa creada y preparada para compilación en Windows.
+
+VALIDADO EN ESTA ENTREGA
+- Estructura C# y archivos XAML completos.
+- Esquema SQLite ejecutado correctamente, incluido el historial de pagos por cuenta.
+- Usuarios, pacientes, camas, historial, incidencias y bitácora.
+- 30 camas y 30 lockers creados automáticamente.
+- Importador compatible con el respaldo JSON de SIRASD 0.7.
+- Prevención de duplicados por identificador y nombre.
+- Copia completa de la base en archivo .sirasd.
+- No contiene WebView, HTML ni JavaScript.
+
+PENDIENTE PARA LA SIGUIENTE ETAPA
+- Compilación y prueba del ejecutable en Windows.
+- Expediente clínico completo.
+- Ampliación de cobranza con cancelaciones y reportes contables.
+- Administración de usuarios y permisos.
+- Restauración guiada de respaldos.
+- Instalador firmado.
+
+NOTA
+La compilación final debe realizarse en Windows porque WPF es una tecnología
+nativa de Windows. La versión web 0.7 permanece sin cambios y funcionando.

@@ -1,0 +1,85 @@
+SIRASD 0.9.7 — INSTALACIÓN EN WINDOWS
+A Solas con Dios A.C.
+
+REQUISITOS
+Windows 10 22H2 (compilación 19045) o Windows 11 de 64 bits.
+Computadoras con procesador Intel o AMD de 64 bits.
+El paquete incluye .NET y SQLite. No necesitas Visual Studio ni instalar .NET por separado.
+Esta edición no es una aplicación para Android, iPhone/iPad, macOS o Linux.
+
+INSTALAR EN OTRA COMPUTADORA
+1. Copia SIRASD-0.9.7-Instalador-Windows-x64.exe a la computadora de destino.
+2. Abre el instalador y sigue las instrucciones en español.
+3. Se instalará para tu usuario de Windows, sin requerir una instalación para todo el equipo.
+4. Abre SIRASD desde el menú Inicio o desde el acceso directo del escritorio.
+
+PRIMER INGRESO EN UN EQUIPO NUEVO
+Correo: direccion@asolascondios.org
+Contraseña inicial: SIRASD2026
+En Mi perfil puedes cambiar el nombre que aparece en la plataforma.
+En una computadora que ya tiene SIRASD se conservan los usuarios y datos existentes.
+
+TUS DATOS
+El instalador NO incluye pacientes, expedientes, contraseñas personales ni registros de tu computadora.
+Un equipo nuevo inicia con la base local vacía y las 30 camas iniciales.
+Cada computadora y usuario de Windows mantiene sus propios datos en:
+%LOCALAPPDATA%\SIRASD\SIRASD.db
+Los datos no se sincronizan automáticamente entre dispositivos.
+No coloques la base activa en una carpeta compartida, OneDrive o una memoria USB.
+Usa Respaldos dentro de SIRASD para guardar los datos del centro de la sesión abierta.
+Para trasladar datos existentes a otra computadora se requiere una migración separada; instalar el programa no transfiere los expedientes.
+
+VERSIÓN PORTÁTIL
+SIRASD-0.9.7-Portatil-Windows-x64.exe abre el programa sin asistente de instalación.
+Sus datos se guardan en la carpeta local indicada arriba, no dentro del ejecutable.
+Copiar solo el ejecutable portátil no copia tus registros.
+
+ACTUALIZAR O DESINSTALAR
+Antes de actualizar, guarda un respaldo y cierra SIRASD.
+La actualización instala el programa conservando la base de datos local.
+La desinstalación quita el programa y sus accesos directos, pero conserva los datos locales.
+Evita abrir versiones antiguas junto con la nueva versión.
+
+FIRMA DIGITAL
+Este instalador todavía no tiene una firma digital comercial de editor verificado.
+Windows o las políticas de una organización pueden pedir una verificación adicional o impedir su ejecución.
+No se incluye ni modifica ninguna configuración de seguridad de Windows.
+
+FUNCIONES INCLUIDAS
+Pacientes editables, perfil, camas sincronizadas con bajas, medicamentos, incidencias,
+calendario, pagos con folio consecutivo y comprobantes, consejería, historias clínicas,
+exámenes, tratamiento psiquiátrico, alimentos y limpieza, solicitudes de traslado y
+gráficas de consumo por semana, mes y año.
+
+PAGOS Y COMPROBANTES
+En Pagos y tickets, selecciona al paciente o usuario, captura el concepto, periodo,
+monto, forma de pago, saldos y nombre de quien recibe. Guardar pago asigna el folio,
+la fecha y la hora; el registro queda en el historial y no se edita posteriormente.
+Puedes imprimir el comprobante seleccionado o reimprimir el último. Hay formatos para
+impresora térmica de 58 mm, térmica de 80 mm y hoja normal. Para guardar un PDF elige
+Hoja normal / PDF y selecciona Microsoft Print to PDF en la ventana de impresión.
+Configura el ancho correcto también en las preferencias del controlador de la impresora.
+En Centro y cuentas, usa Editar datos de comprobantes para capturar domicilio, teléfono,
+RFC y mensaje final. Cada pago conserva esos datos como estaban al momento de guardarlo.
+
+CENTRO Y CUENTAS INDEPENDIENTES
+En Centro y cuentas, elige Editar nombre del centro para cambiar el nombre mostrado.
+El cambio se aplica al centro de la sesión abierta y conserva sus registros.
+Para registrar otro centro o usuario con datos separados, elige Crear cuenta independiente.
+También puedes crearla desde la pantalla de inicio de sesión.
+Escribe nombre del centro, nombre del usuario, correo y una contraseña de 8 a 128 caracteres.
+Cierra sesión e ingresa con el nuevo correo y contraseña para entrar a su espacio.
+Cada cuenta nueva comienza sin pacientes, inventarios ni bitácoras y con 30 camas libres.
+El usuario original conserva sus datos. La contraseña ya no se rellena automáticamente.
+Las cuentas independientes guardan sus datos en %LOCALAPPDATA%\SIRASD\Accounts\<identificador>\SIRASD.db.
+El catálogo de acceso está en %LOCALAPPDATA%\SIRASD\Accounts.db.
+El respaldo de un centro no incluye el catálogo ni las cuentas de los otros centros.
+Para trasladar todas las cuentas se requiere una migración del conjunto de archivos con la aplicación cerrada.
+Las cuentas son locales: no se sincronizan automáticamente entre computadoras.
+
+WHATSAPP
+En Pacientes, selecciona un registro y elige WhatsApp.
+SIRASD usa el teléfono del tutor o responsable y prepara un mensaje con el nombre del centro.
+Para teléfonos mexicanos puedes capturar los 10 dígitos; SIRASD agrega el código de país 52.
+WhatsApp se abre en el navegador o aplicación configurada. Revisa el número y el mensaje antes de enviarlo.
+SIRASD no lee conversaciones, no guarda claves de WhatsApp y no envía mensajes automáticamente.

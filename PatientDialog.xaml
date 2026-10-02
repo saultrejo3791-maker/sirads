@@ -1,0 +1,42 @@
+<Window x:Class="SIRASD.Desktop.PatientDialog"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Nuevo paciente · SIRASD" Width="680" Height="780" MinWidth="610" MinHeight="600"
+ ResizeMode="CanResize" WindowStartupLocation="CenterOwner" Background="{StaticResource Surface}">
+ <Grid>
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1" Padding="30,24">
+   <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="48"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <Border Width="42" Height="42" Background="{StaticResource Mint}" CornerRadius="12" VerticalAlignment="Top"><TextBlock Text="&#xE8FA;" Style="{StaticResource Icon}" Foreground="{StaticResource Green}"/></Border>
+    <StackPanel Grid.Column="1" Margin="12,0,0,0"><TextBlock Text="NUEVO INGRESO" Style="{StaticResource Eyebrow}"/><TextBlock Text="Registrar paciente" FontSize="25" FontWeight="SemiBold" Margin="0,4,0,4"/><TextBlock Text="Comienza con la información de la persona." Foreground="{StaticResource Muted}" FontSize="12"/></StackPanel>
+   </Grid>
+  </Border>
+  <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+   <StackPanel Margin="30,22">
+    <TextBlock Text="01 / DATOS DEL PACIENTE" Style="{StaticResource Eyebrow}" Margin="0,0,0,16"/>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="20"/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel><TextBlock Text="Nombre(s) *" Style="{StaticResource FieldLabel}"/><TextBox x:Name="FirstName" AutomationProperties.Name="Nombre del paciente, obligatorio"/></StackPanel>
+     <StackPanel Grid.Column="2"><TextBlock Text="Primer apellido" Style="{StaticResource FieldLabel}"/><TextBox x:Name="LastName" AutomationProperties.Name="Primer apellido"/></StackPanel>
+    </Grid>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="20"/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel><TextBlock Text="Segundo apellido" Style="{StaticResource FieldLabel}"/><TextBox x:Name="LastName2" AutomationProperties.Name="Segundo apellido"/></StackPanel>
+     <StackPanel Grid.Column="2"><TextBlock Text="Fecha de ingreso" Style="{StaticResource FieldLabel}"/><DatePicker x:Name="AdmissionDate" AutomationProperties.Name="Fecha de ingreso"/></StackPanel>
+    </Grid>
+    <Border Height="1" Background="{StaticResource Line}" Margin="0,3,0,21"/>
+    <TextBlock Text="02 / CONTACTO Y ACOMPAÑAMIENTO" Style="{StaticResource Eyebrow}" Margin="0,0,0,16"/>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="20"/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel><TextBlock Text="Responsable familiar" Style="{StaticResource FieldLabel}"/><TextBox x:Name="Guardian" AutomationProperties.Name="Responsable familiar"/></StackPanel>
+     <StackPanel Grid.Column="2"><TextBlock Text="Teléfono" Style="{StaticResource FieldLabel}"/><TextBox x:Name="Phone" AutomationProperties.Name="Teléfono de contacto"/></StackPanel>
+    </Grid>
+    <TextBlock Text="Observaciones" Style="{StaticResource FieldLabel}"/>
+    <TextBox x:Name="Notes" Height="90" AcceptsReturn="True" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="Observaciones"/>
+    <TextBlock Text="* Campo obligatorio" Foreground="{StaticResource Muted}" FontSize="11"/>
+   </StackPanel>
+  </ScrollViewer>
+  <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="30,16">
+   <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <TextBlock x:Name="ValidationText" Foreground="#B42318" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,16,0" AutomationProperties.LiveSetting="Polite"/>
+    <StackPanel Grid.Column="1" Orientation="Horizontal"><Button Content="Cancelar" Click="Cancel_Click" Margin="0,0,10,0" IsCancel="True"/><Button Content="Guardar paciente" Click="Save_Click" Style="{StaticResource PrimaryButton}"/></StackPanel>
+   </Grid>
+  </Border>
+ </Grid>
+</Window>

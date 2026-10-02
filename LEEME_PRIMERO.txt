@@ -1,0 +1,39 @@
+SIRASD 0.9 ESCRITORIO — PRIMERA ETAPA
+Centro de Rehabilitación A Solas con Dios A.C.
+
+Esta es la nueva base nativa para Windows. No utiliza navegador ni almacena
+la información como una página web.
+
+FUNCIONES INCLUIDAS EN ESTA ETAPA
+- Inicio de sesión local con contraseña protegida.
+- Registro y búsqueda de pacientes.
+- Base SQLite guardada en la computadora.
+- 30 camas: 10 literas con niveles inferior, medio y superior.
+- Lockers L-01 a L-30.
+- Importación del respaldo JSON descargado desde SIRASD 0.7.
+- Importación de las asignaciones de cama existentes.
+- Creación de respaldos completos para memoria USB.
+- Bitácora técnica preparada para nuevas funciones.
+
+ACCESO INICIAL
+Correo: direccion@asolascondios.org
+Contraseña: SIRASD2026
+
+UBICACIÓN DE LOS DATOS
+Windows guarda la base principal en:
+%LOCALAPPDATA%\SIRASD\SIRASD.db
+
+PARA GENERAR EL PROGRAMA EN WINDOWS
+1. Instalar Visual Studio 2026 o el SDK de .NET 10.
+2. Abrir esta carpeta.
+3. Ejecutar PUBLICAR_EXE.ps1 con PowerShell.
+4. El programa aparecerá en Entrega_Windows\SIRASD.exe.
+
+IMPORTANTE
+La versión 0.7 continuará funcionando de manera independiente. Primero debe
+descargarse su respaldo JSON y después importarlo desde la sección Respaldos
+de SIRASD 0.9.
+
+SIGUIENTE ETAPA
+Expediente completo, cobranza, medicamentos, visitas, incidencias, usuarios,
+permisos, impresión y restauración de respaldos.

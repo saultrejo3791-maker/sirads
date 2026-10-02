@@ -1,0 +1,154 @@
+<Window x:Class="SIRASD.Desktop.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:SIRASD.Desktop"
+ Title="SIRASD" Width="1240" Height="820" MinWidth="1000" MinHeight="680"
+ WindowStartupLocation="CenterScreen" Background="{StaticResource Surface}">
+ <Grid>
+  <Grid x:Name="LoginView">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="5*"/><ColumnDefinition Width="6*"/></Grid.ColumnDefinitions>
+   <Border Background="{StaticResource Navy}" ClipToBounds="True">
+    <Grid>
+     <Canvas IsHitTestVisible="False" Opacity="0.18"><Ellipse Width="550" Height="550" Stroke="#90BDA8" StrokeThickness="1" Canvas.Left="-220" Canvas.Top="290"/><Ellipse Width="420" Height="420" Stroke="#90BDA8" StrokeThickness="1" Canvas.Left="-155" Canvas.Top="355"/><Ellipse Width="290" Height="290" Stroke="#90BDA8" StrokeThickness="1" Canvas.Left="-90" Canvas.Top="420"/></Canvas>
+     <Grid Margin="48,42">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal"><Border Width="44" Height="44" Background="#31574F" CornerRadius="12"><TextBlock Text="SIR" Foreground="#D7EBD8" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><StackPanel Margin="13,0,0,0" VerticalAlignment="Center"><TextBlock Text="SIRASD" FontSize="22" FontWeight="Bold" Foreground="White"/><TextBlock Text="GESTIÓN DE CENTROS" Foreground="#A6C2BB" FontSize="9"/></StackPanel></StackPanel>
+      <StackPanel Grid.Row="1" VerticalAlignment="Center">
+       <TextBlock Text="CUIDAR. ACOMPAÑAR. TRANSFORMAR." Foreground="#B7D8C6" FontSize="10" FontWeight="SemiBold" Margin="0,0,0,22"/>
+       <TextBlock Text="Cada día,&#x0a;una nueva&#x0a;oportunidad." FontSize="43" LineHeight="51" FontWeight="SemiBold" Foreground="#FAFCF8"/>
+       <Border Width="42" Height="3" Background="#93B99E" HorizontalAlignment="Left" Margin="0,28,0,24"/>
+       <TextBlock Text="Un espacio para organizar la atención y acompañar cada proceso de recuperación." Foreground="#B8CECA" FontSize="15" LineHeight="25" TextWrapping="Wrap" MaxWidth="310" HorizontalAlignment="Left"/>
+      </StackPanel>
+      <TextBlock Grid.Row="2" Text="Tu centro, su información&#x0a;y su propio espacio." Foreground="#AAC1BB" FontSize="12" LineHeight="20"/>
+     </Grid>
+    </Grid>
+   </Border>
+   <Grid Grid.Column="1" Margin="42">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <TextBlock Text="GESTIÓN Y ACOMPAÑAMIENTO" Style="{StaticResource Eyebrow}" HorizontalAlignment="Right"/>
+    <Border Grid.Row="1" MaxWidth="380" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+     <StackPanel>
+      <Border Width="52" Height="52" CornerRadius="14" Background="{StaticResource Mint}" HorizontalAlignment="Left"><TextBlock Text="&#xE77B;" Style="{StaticResource Icon}" Foreground="{StaticResource Green}" FontSize="24"/></Border>
+      <TextBlock Text="Te damos la bienvenida" FontSize="29" FontWeight="SemiBold" Margin="0,22,0,8" Foreground="{StaticResource Ink}" TextWrapping="Wrap"/>
+      <TextBlock Text="Ingresa para continuar con la atención del centro." Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,30" LineHeight="23"/>
+      <TextBlock Text="Correo electrónico" Style="{StaticResource FieldLabel}"/>
+      <TextBox x:Name="EmailBox" Text="direccion@asolascondios.org" AutomationProperties.Name="Correo electrónico"/>
+      <TextBlock Text="Contraseña" Style="{StaticResource FieldLabel}"/>
+      <PasswordBox x:Name="PasswordBox" KeyDown="PasswordBox_KeyDown" AutomationProperties.Name="Contraseña"/>
+      <TextBlock x:Name="LoginError" Foreground="#B42318" TextWrapping="Wrap" Margin="0,0,0,12" AutomationProperties.LiveSetting="Polite"/>
+      <Button Content="Ingresar a SIRASD    →" Click="Login_Click" Style="{StaticResource PrimaryButton}" Height="48"/>
+      <Button Content="Crear cuenta independiente" Click="CreateAccount_Click" Margin="0,10,0,0"/>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,24,0,0"><TextBlock Text="&#xE8D7;" Style="{StaticResource Icon}" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,0,8,0"/><TextBlock Text="Tu información, en esta computadora." FontSize="12" Foreground="{StaticResource Muted}"/></StackPanel>
+     </StackPanel>
+    </Border>
+    <TextBlock Grid.Row="2" Text="SIRASD 0.9  ·  Aplicación de escritorio" FontSize="11" Foreground="{StaticResource Muted}" HorizontalAlignment="Center"/>
+   </Grid>
+  </Grid>
+  <Grid x:Name="ApplicationView" Visibility="Collapsed">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="224"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <Border Background="{StaticResource Navy}">
+    <Grid Margin="16,24,16,18">
+     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+     <ScrollViewer Grid.RowSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,12">     <StackPanel>
+      <StackPanel Orientation="Horizontal" Margin="10,4,0,0"><Border Width="40" Height="40" Background="#31574F" CornerRadius="11"><TextBlock x:Name="SidebarMonogram" Text="SIR" Foreground="#D7EBD8" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><StackPanel Margin="11,0,0,0"><TextBlock Text="SIRASD" Foreground="White" FontSize="23" FontWeight="Bold"/><TextBlock x:Name="SidebarCenterName" Text="Tu centro" Foreground="#A6C2BB" FontSize="10" MaxWidth="115" TextWrapping="Wrap"/></StackPanel></StackPanel>
+      <Border Height="1" Background="#2A464B" Margin="10,27,10,27"/>
+      <TextBlock Text="ESPACIO DE TRABAJO" Foreground="#8FABA9" FontSize="9" FontWeight="SemiBold" Margin="16,0,0,12"/>
+      <Button x:Name="HomeNav" Tag="Inicio" Click="Navigation_Click" Style="{StaticResource NavigationButton}" ToolTip="Resumen del centro"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE80F;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Inicio"/></StackPanel></Button>
+      <Button x:Name="PatientsNav" Tag="Pacientes" Click="Navigation_Click" Style="{StaticResource NavigationButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE716;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Pacientes"/></StackPanel></Button>
+      <Button x:Name="PaymentsNav" Tag="Pagos" Click="Navigation_Click" Style="{StaticResource NavigationButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE8C7;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Pagos y tickets"/></StackPanel></Button>
+      <Button x:Name="BedsNav" Tag="Camas" Click="Navigation_Click" Style="{StaticResource NavigationButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE80A;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Camas y lockers"/></StackPanel></Button>
+      <Button x:Name="MedicationsNav" Tag="Medicamentos" Click="Navigation_Click" Style="{StaticResource NavigationButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE710;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Medicamentos"/></StackPanel></Button>
+      <StackPanel x:Name="ExtraNavigation"/>
+      <Button x:Name="BackupsNav" Tag="Respaldos" Click="Navigation_Click" Style="{StaticResource NavigationButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE74E;" Style="{StaticResource Icon}" Margin="0,0,13,0" FontSize="17"/><TextBlock Text="Respaldos"/></StackPanel></Button>
+     </StackPanel>
+</ScrollViewer>
+     <StackPanel Grid.Row="2">
+      <Border Background="#1C3A40" CornerRadius="12" Padding="15" Margin="4,0,4,20"><StackPanel><TextBlock Text="Cerca de cada persona." Foreground="#DCEAE3" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="Un día a la vez." Foreground="#9EBBB2" FontSize="12" Margin="0,5,0,0"/></StackPanel></Border>
+      <Border BorderBrush="#2A464B" BorderThickness="0,1,0,0" Padding="6,18,6,0">
+       <StackPanel>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="40"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Border Background="#34554F" CornerRadius="18" Width="36" Height="36"><TextBlock Text="&#xE77B;" Style="{StaticResource Icon}" FontSize="16" Foreground="#DCEAE3"/></Border><StackPanel Grid.Column="1" Margin="9,0,0,0"><TextBlock x:Name="SignedUser" Foreground="White" FontWeight="SemiBold" FontSize="13" TextTrimming="CharacterEllipsis"/><TextBlock Text="Dirección" Foreground="#9EBBB2" FontSize="11" Margin="0,4,0,0"/></StackPanel></Grid>
+        <Button Content="Centro y cuentas" Tag="Centro" Click="Navigation_Click" Background="Transparent" Foreground="#BDD0CB" BorderBrush="#3B575B" Margin="0,12,0,0" Padding="12,6" MinHeight="32"/>
+        <Button Content="Mi perfil" Click="Profile_Click" Background="Transparent" Foreground="#BDD0CB" BorderBrush="#3B575B" Margin="0,12,0,0" Padding="12,6" MinHeight="32"/>
+        <Button Content="Cerrar sesión" Click="Logout_Click" Background="Transparent" Foreground="#BDD0CB" BorderBrush="#3B575B" Margin="0,16,0,0" Padding="12,8" MinHeight="36"/>
+       </StackPanel>
+      </Border>
+     </StackPanel>
+    </Grid>
+   </Border>
+   <Grid Grid.Column="1" Margin="30,26,30,18">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Grid Margin="0,0,0,24">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <StackPanel><TextBlock x:Name="CenterBreadcrumb" Text="MI CENTRO / SIRASD" TextWrapping="Wrap" Style="{StaticResource Eyebrow}" Margin="0,0,0,7"/><TextBlock x:Name="PageTitle" Text="Inicio" FontSize="29" FontWeight="SemiBold"/><TextBlock x:Name="PageSubtitle" Text="Una mirada al día a día del centro." Foreground="{StaticResource Muted}" FontSize="13" Margin="0,5,16,0" TextWrapping="Wrap"/></StackPanel>
+     <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"><Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="18" Padding="12,7" HorizontalAlignment="Right"><StackPanel Orientation="Horizontal"><Ellipse Width="6" Height="6" Fill="{StaticResource Green}" Margin="0,0,7,0"/><TextBlock Text="Espacio local" FontSize="11" Foreground="{StaticResource Green}" FontWeight="SemiBold"/></StackPanel></Border><TextBlock x:Name="CurrentDate" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,10,0,0"/></StackPanel>
+    </Grid>
+    <Grid Grid.Row="1">
+     <Grid x:Name="DashboardPanel">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="0,0,3,0">
+       <StackPanel>
+        <Border CornerRadius="17" Padding="28,24" ClipToBounds="True">
+         <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#1E514C" Offset="0"/><GradientStop Color="#347466" Offset="1"/></LinearGradientBrush></Border.Background>
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <StackPanel><TextBlock Text="ATENCIÓN CON PROPÓSITO" Foreground="#B7D8C6" FontSize="10" FontWeight="SemiBold"/><TextBlock x:Name="WelcomeTitle" Text="Bienvenido a tu centro." Foreground="White" FontSize="25" FontWeight="SemiBold" Margin="0,9,0,7" TextWrapping="Wrap"/><TextBlock Text="Cada día, una nueva oportunidad para acompañar." Foreground="#D0E6DC" FontSize="13" TextWrapping="Wrap" Margin="0,0,16,0"/></StackPanel>
+          <Border Grid.Column="1" Width="76" Height="76" CornerRadius="38" BorderBrush="#659A86" BorderThickness="1" Margin="16,0,0,0"><Path Data="M20,34 C4,23 0,12 9,7 C15,4 20,9 20,12 C20,9 25,4 31,7 C40,12 36,23 20,34 Z" Stroke="#D3E8CD" StrokeThickness="1.5" Width="34" Height="32" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+         </Grid>
+        </Border>
+        <TextBlock Text="EL CENTRO EN NÚMEROS" Style="{StaticResource Eyebrow}" Margin="2,23,0,12"/>
+        <UniformGrid Columns="4" Rows="1">
+         <Border Style="{StaticResource Card}" Padding="18" Margin="0,0,12,0"><StackPanel><Grid><TextBlock Text="&#xE716;" Style="{StaticResource Icon}" Foreground="{StaticResource Green}" HorizontalAlignment="Left"/><TextBlock Text="01" Foreground="#B4C2BC" FontSize="10" HorizontalAlignment="Right"/></Grid><TextBlock x:Name="ActivePatientsText" Text="0" FontSize="33" FontWeight="SemiBold" Margin="0,12,0,2"/><TextBlock Text="Pacientes activos" Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap"/></StackPanel></Border>
+         <Border Style="{StaticResource Card}" Padding="18" Margin="0,0,12,0"><StackPanel><Grid><TextBlock Text="&#xE80A;" Style="{StaticResource Icon}" Foreground="#638492" HorizontalAlignment="Left"/><TextBlock Text="02" Foreground="#B4C2BC" FontSize="10" HorizontalAlignment="Right"/></Grid><TextBlock x:Name="OccupiedBedsText" Text="0" FontSize="33" FontWeight="SemiBold" Margin="0,12,0,2"/><TextBlock Text="Camas ocupadas" Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap"/></StackPanel></Border>
+         <Border Style="{StaticResource Card}" Padding="18" Margin="0,0,12,0" Background="#F0F7F1" BorderBrush="#D6E6D8"><StackPanel><Grid><TextBlock Text="&#xE73E;" Style="{StaticResource Icon}" Foreground="{StaticResource Green}" HorizontalAlignment="Left"/><TextBlock Text="03" Foreground="#99B5A0" FontSize="10" HorizontalAlignment="Right"/></Grid><TextBlock x:Name="AvailableBedsText" Text="0" FontSize="33" FontWeight="SemiBold" Foreground="{StaticResource Green}" Margin="0,12,0,2"/><TextBlock Text="Camas disponibles" Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap"/></StackPanel></Border>
+         <Border Style="{StaticResource Card}" Padding="18"><StackPanel><Grid><TextBlock Text="&#xE7BA;" Style="{StaticResource Icon}" Foreground="#AA8547" HorizontalAlignment="Left"/><TextBlock Text="04" Foreground="#B4C2BC" FontSize="10" HorizontalAlignment="Right"/></Grid><TextBlock x:Name="IncidentsText" Text="0" FontSize="33" FontWeight="SemiBold" Margin="0,12,0,2"/><TextBlock Text="Incidencias abiertas" Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap"/></StackPanel></Border>
+        </UniformGrid>
+        <Grid Margin="0,20,0,0">
+         <Grid.ColumnDefinitions><ColumnDefinition Width="5*"/><ColumnDefinition Width="18"/><ColumnDefinition Width="4*"/></Grid.ColumnDefinitions>
+         <Border Style="{StaticResource Card}">
+          <StackPanel><TextBlock Text="Ocupación del centro" FontSize="17" FontWeight="SemiBold"/><Grid Margin="0,18,0,10"><TextBlock x:Name="CapacityText" Text="0 de 0 camas ocupadas" FontSize="12" Foreground="{StaticResource Muted}"/><TextBlock x:Name="OccupancyText" Text="0%" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Right"/></Grid><ProgressBar x:Name="OccupancyBar" Minimum="0" Maximum="100" Value="0" Height="8" Background="#EAF0EB" Foreground="{StaticResource Green}" BorderThickness="0"/><TextBlock Text="Consulta las asignaciones por litera y nivel." Foreground="{StaticResource Muted}" FontSize="12" Margin="0,13,0,17" TextWrapping="Wrap"/><Button Content="Ver camas y lockers   →" Tag="Camas" Click="Navigation_Click" HorizontalAlignment="Left" Padding="13,8" MinHeight="36"/></StackPanel>
+         </Border>
+         <Border Grid.Column="2" Style="{StaticResource Card}">
+          <StackPanel><TextBlock Text="¿Por dónde empezamos?" FontSize="17" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock Text="Acciones para el trabajo de hoy." Foreground="{StaticResource Muted}" FontSize="12" Margin="0,7,0,17"/><Button Content="+  Registrar paciente" Click="NewPatient_Click" Style="{StaticResource PrimaryButton}"/><Button Content="Consultar pacientes   →" Tag="Pacientes" Click="Navigation_Click" Margin="0,9,0,0"/></StackPanel>
+         </Border>
+        </Grid>
+        <Grid Margin="4,20,4,4"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><TextBlock Text="&#xE74E;" Style="{StaticResource Icon}" FontSize="15" Foreground="{StaticResource Muted}" Margin="0,0,10,0"/><TextBlock Grid.Column="1" Text="Cuida la información del centro: crea respaldos con regularidad." Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap"/></Grid>
+       </StackPanel>
+      </ScrollViewer>
+     </Grid>
+     <Grid x:Name="PatientsPanel" Visibility="Collapsed">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+      <Grid Margin="0,0,0,18"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+       <Grid MaxWidth="340" HorizontalAlignment="Left" Width="340" Margin="0,0,16,0"><TextBox x:Name="PatientSearch" MinWidth="240" Padding="38,11,12,11" Margin="0" TextChanged="PatientSearch_TextChanged" AutomationProperties.Name="Buscar pacientes por nombre o folio"/><TextBlock Text="&#xE721;" Style="{StaticResource Icon}" FontSize="15" Foreground="{StaticResource Muted}" HorizontalAlignment="Left" Margin="13,0,0,0" IsHitTestVisible="False"/><TextBlock Text="Buscar por nombre o folio" Foreground="{StaticResource Muted}" FontSize="12" Margin="38,0,12,0" VerticalAlignment="Center" IsHitTestVisible="False"><TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Text, ElementName=PatientSearch}" Value=""><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></Grid>
+       <StackPanel Grid.Column="1" Orientation="Horizontal"><Button Content="WhatsApp" Click="WhatsAppPatient_Click" Margin="0,0,8,0" ToolTip="Abrir WhatsApp con el teléfono del tutor o responsable"/><Button Content="Editar seleccionado" Click="EditPatient_Click" Margin="0,0,8,0"/><Button Content="+  Nuevo paciente" Click="NewPatient_Click" Style="{StaticResource PrimaryButton}"/></StackPanel>
+      </Grid>
+      <Border Grid.Row="1" Style="{StaticResource Card}" Padding="0">
+       <Grid Margin="1"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <Grid Margin="20,17"><TextBlock Text="Directorio de pacientes" FontWeight="SemiBold" FontSize="16"/><TextBlock Text="{Binding Patients.Count, StringFormat={}{0} registros}" Foreground="{StaticResource Muted}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
+        <DataGrid Grid.Row="1" x:Name="PatientsGrid" MouseDoubleClick="Patient_DoubleClick" ItemsSource="{Binding Patients}" Margin="0,0,0,10" AutomationProperties.Name="Directorio de pacientes">
+         <DataGrid.Columns><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Folio" Binding="{Binding Folio}" Width="135"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Paciente" Binding="{Binding FullName}" Width="*" MinWidth="145"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Ingreso" Binding="{Binding AdmissionDate}" Width="113"/><DataGridTemplateColumn Header="Estado" CellTemplate="{StaticResource StatusTemplate}" Width="105" SortMemberPath="Status"/><DataGridTemplateColumn Header="Semáforo" CellTemplate="{StaticResource TrafficTemplate}" Width="107" SortMemberPath="TrafficLight"/></DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24" IsHitTestVisible="False"><StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Patients.Count}" Value="0"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style><TextBlock Text="&#xE721;" Style="{StaticResource Icon}" FontSize="30" Foreground="#A7BBB0"/><TextBlock Text="No hay pacientes para mostrar" FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,15,0,6"/><TextBlock Text="Prueba otra búsqueda o registra un nuevo paciente." FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" TextAlignment="Center"/></StackPanel>
+       </Grid>
+      </Border>
+     </Grid>
+     <local:PaymentsView x:Name="PaymentsPanel" Visibility="Collapsed"/>
+     <Grid x:Name="BedsPanel" Visibility="Collapsed">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+      <Border Background="{StaticResource Mint}" CornerRadius="10" Padding="16,13" Margin="0,0,0,18"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Dormitorio principal · distribución por litera y nivel" FontSize="12" Foreground="#326553" TextWrapping="Wrap"/><TextBlock Grid.Column="1" Text="{Binding Beds.Count, StringFormat={}{0} camas}" FontSize="12" FontWeight="SemiBold" Foreground="#326553" Margin="16,0,0,0"/></Grid></Border>
+      <Border Grid.Row="1" Style="{StaticResource Card}" Padding="0">
+       <Grid Margin="1"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions><TextBlock Text="Camas y asignaciones" FontSize="16" FontWeight="SemiBold" Margin="20,17"/>
+        <DataGrid Grid.Row="1" x:Name="BedsGrid" ItemsSource="{Binding Beds}" Margin="0,0,0,10" AutomationProperties.Name="Camas y asignaciones"><DataGrid.Columns><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Litera" Binding="{Binding Code}" Width="115"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Nivel" Binding="{Binding Level}" Width="110"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Locker" Binding="{Binding Locker}" Width="85"/><DataGridTemplateColumn Header="Estado" CellTemplate="{StaticResource StatusTemplate}" Width="120" SortMemberPath="Status"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Paciente" Binding="{Binding PatientName}" Width="*" MinWidth="165"/><DataGridTextColumn ElementStyle="{StaticResource GridText}" Header="Dormitorio" Binding="{Binding Room}" Width="170"/></DataGrid.Columns></DataGrid>
+       </Grid>
+      </Border>
+     </Grid>
+     <local:MedicationsView x:Name="MedicationsPanel" Visibility="Collapsed"/>
+     <ContentControl x:Name="CenterPanel" Visibility="Collapsed"/>
+     <Grid x:Name="BackupsPanel" Visibility="Collapsed">
+      <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel>
+       <Border Background="#EAF2EC" CornerRadius="14" Padding="22" Margin="0,0,0,22"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><TextBlock Text="&#xE8D7;" Style="{StaticResource Icon}" Foreground="{StaticResource Green}" HorizontalAlignment="Left" FontSize="25"/><StackPanel Grid.Column="1"><TextBlock Text="La tranquilidad de tener un respaldo" FontSize="18" FontWeight="SemiBold"/><TextBlock Text="Conserva una copia reciente en otra carpeta o en una memoria USB." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="13" Margin="0,6,0,0"/></StackPanel></Grid></Border>
+       <Border Style="{StaticResource Card}" Margin="0,0,0,16"><StackPanel><TextBlock Text="PROTEGER INFORMACIÓN" Style="{StaticResource Eyebrow}"/><TextBlock Text="Crear una copia de seguridad" FontSize="22" FontWeight="SemiBold" Margin="0,9,0,9"/><TextBlock Text="Guarda una copia completa de la base de datos del centro. Tú eliges dónde conservarla." TextWrapping="Wrap" Foreground="{StaticResource Muted}" LineHeight="23" MaxWidth="630" HorizontalAlignment="Left"/><Button Content="Guardar respaldo    →" Click="CreateBackup_Click" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Margin="0,21,0,0"/></StackPanel></Border>
+       <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="CONTINUAR CON TU INFORMACIÓN" Style="{StaticResource Eyebrow}"/><TextBlock Text="Importar desde SIRASD 0.7" FontSize="22" FontWeight="SemiBold" Margin="0,9,0,9"/><TextBlock Text="Selecciona el archivo JSON de la versión anterior para incorporar pacientes y asignaciones de camas sin duplicar registros." TextWrapping="Wrap" Foreground="{StaticResource Muted}" LineHeight="23" MaxWidth="630" HorizontalAlignment="Left"/><Button Content="Seleccionar archivo de respaldo" Click="ImportBackup_Click" HorizontalAlignment="Left" Margin="0,21,0,0"/></StackPanel></Border>
+      </StackPanel></ScrollViewer>
+     </Grid>
+    </Grid>
+    <Border Grid.Row="2" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="2,13,2,0" Margin="0,18,0,0"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Ellipse Width="6" Height="6" Fill="{StaticResource Green}" Margin="0,0,8,0"/><TextBlock Grid.Column="1" x:Name="StatusText" Text="Sistema listo para acompañarte." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite"/><TextBlock Grid.Column="2" Text="SIRASD 0.9.7" FontSize="10" Foreground="#81958D" Margin="12,0,0,0"/></Grid></Border>
+   </Grid>
+  </Grid>
+ </Grid>
+</Window>

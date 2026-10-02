@@ -1,0 +1,63 @@
+<UserControl x:Class="SIRASD.Desktop.PaymentsView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <Grid>
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <UniformGrid Columns="3" Margin="0,0,0,16">
+   <Border Style="{StaticResource Card}" Padding="16" Margin="0,0,12,0"><StackPanel><TextBlock Text="ÚLTIMO FOLIO" Style="{StaticResource Eyebrow}"/><TextBlock x:Name="LastFolioText" Text="Sin pagos" FontSize="22" FontWeight="SemiBold" Margin="0,6,0,0"/></StackPanel></Border>
+   <Border Style="{StaticResource Card}" Padding="16" Margin="0,0,12,0"><StackPanel><TextBlock Text="PAGOS DE HOY" Style="{StaticResource Eyebrow}"/><TextBlock x:Name="TodayCountText" Text="0" FontSize="26" FontWeight="SemiBold" Margin="0,5,0,0"/></StackPanel></Border>
+   <Border Style="{StaticResource Card}" Padding="16"><StackPanel><TextBlock Text="TOTAL DE HOY" Style="{StaticResource Eyebrow}"/><TextBlock x:Name="TodayTotalText" Text="$0.00" FontSize="26" FontWeight="SemiBold" Foreground="{StaticResource Green}" Margin="0,5,0,0"/></StackPanel></Border>
+  </UniformGrid>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="360"/><ColumnDefinition Width="16"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <Border Style="{StaticResource Card}" Padding="0">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,17,18,9">
+     <StackPanel>
+      <TextBlock Text="Registrar pago" FontSize="18" FontWeight="SemiBold"/>
+      <TextBlock Text="El folio, la fecha y la hora se asignan al guardar." Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,5,0,14"/>
+      <TextBlock Text="Paciente / usuario *" FontWeight="SemiBold" FontSize="12"/>
+      <ComboBox x:Name="PatientBox" DisplayMemberPath="DisplayName" SelectionChanged="PatientBox_SelectionChanged" IsTextSearchEnabled="True" Margin="0,6,0,13" AutomationProperties.Name="Paciente o usuario"/>
+      <TextBlock Text="Concepto de pago *" FontWeight="SemiBold" FontSize="12"/>
+      <ComboBox x:Name="ConceptBox" IsEditable="True" Text="Cuota de rehabilitación" Margin="0,6,0,13" AutomationProperties.Name="Concepto de pago"><ComboBoxItem Content="Cuota de rehabilitación"/><ComboBoxItem Content="Cuota semanal"/><ComboBoxItem Content="Aportación"/><ComboBoxItem Content="Medicamentos"/><ComboBoxItem Content="Otro"/></ComboBox>
+      <TextBlock Text="Periodo o semana que cubre *" FontWeight="SemiBold" FontSize="12"/>
+      <TextBox x:Name="PeriodBox" Margin="0,6,0,13" AutomationProperties.Name="Periodo o semana"/>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+       <StackPanel><TextBlock Text="Monto *" FontWeight="SemiBold" FontSize="12"/><TextBox x:Name="AmountBox" Margin="0,6,0,13" TextChanged="BalanceInput_Changed" AutomationProperties.Name="Monto"/></StackPanel>
+       <StackPanel Grid.Column="2"><TextBlock Text="Forma de pago *" FontWeight="SemiBold" FontSize="12"/><ComboBox x:Name="PaymentMethodBox" SelectedIndex="0" Margin="0,6,0,13" AutomationProperties.Name="Forma de pago"><ComboBoxItem Content="Efectivo"/><ComboBoxItem Content="Transferencia"/><ComboBoxItem Content="Depósito"/><ComboBoxItem Content="Tarjeta"/><ComboBoxItem Content="Otro"/></ComboBox></StackPanel>
+      </Grid>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+       <StackPanel><TextBlock Text="Saldo anterior" FontWeight="SemiBold" FontSize="12"/><TextBox x:Name="PreviousBalanceBox" Margin="0,6,0,13" TextChanged="BalanceInput_Changed" AutomationProperties.Name="Saldo anterior"/></StackPanel>
+       <StackPanel Grid.Column="2"><TextBlock Text="Saldo restante" FontWeight="SemiBold" FontSize="12"/><TextBox x:Name="RemainingBalanceBox" Margin="0,6,0,13" AutomationProperties.Name="Saldo restante"/></StackPanel>
+      </Grid>
+      <TextBlock Text="Nombre de quien recibe *" FontWeight="SemiBold" FontSize="12"/>
+      <TextBox x:Name="ReceivedByBox" Margin="0,6,0,13" AutomationProperties.Name="Nombre de quien recibe"/>
+      <TextBlock Text="Formato de comprobante" FontWeight="SemiBold" FontSize="12"/>
+      <ComboBox x:Name="PaperBox" SelectedIndex="1" Margin="0,6,0,8" AutomationProperties.Name="Formato de comprobante"><ComboBoxItem Content="Ticket térmico · 58 mm" Tag="58"/><ComboBoxItem Content="Ticket térmico · 80 mm" Tag="80"/><ComboBoxItem Content="Hoja normal / PDF" Tag="Letter"/></ComboBox>
+      <TextBlock Text="Para PDF elige Hoja normal / PDF y selecciona Microsoft Print to PDF en la ventana de impresión." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,13"/>
+      <Button x:Name="SavePaymentButton" Content="Guardar pago" Style="{StaticResource PrimaryButton}" Click="SavePayment_Click"/>
+      <WrapPanel Margin="0,8,0,0"><Button x:Name="PrintButton" Content="Imprimir ticket" Click="PrintTicket_Click" IsEnabled="False" Margin="0,0,8,8"/><Button x:Name="PreviewButton" Content="Vista previa" Click="Preview_Click" IsEnabled="False" Margin="0,0,8,8"/></WrapPanel>
+      <Button x:Name="ReprintButton" Content="Reimprimir último comprobante" Click="ReprintLast_Click" IsEnabled="False"/>
+     </StackPanel>
+    </ScrollViewer>
+   </Border>
+   <Border Grid.Column="2" Style="{StaticResource Card}" Padding="0">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+     <Grid Margin="17,15,17,12"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="220"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Historial de pagos" FontSize="17" FontWeight="SemiBold"/><TextBlock Text="Selecciona un comprobante para imprimirlo o consultar sus datos." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" Margin="0,4,12,0"/></StackPanel><TextBox x:Name="SearchBox" Grid.Column="1" TextChanged="SearchBox_TextChanged" ToolTip="Buscar por folio, nombre, concepto o periodo" AutomationProperties.Name="Buscar pagos"/></Grid>
+     <DataGrid x:Name="PaymentsGrid" Grid.Row="1" ItemsSource="{Binding Payments}" SelectionChanged="PaymentsGrid_SelectionChanged" MouseDoubleClick="PaymentsGrid_DoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Historial de pagos">
+      <DataGrid.Columns>
+       <DataGridTextColumn Header="Folio" Binding="{Binding Folio}" Width="108" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Fecha y hora" Binding="{Binding PaidAtDisplay}" Width="130" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Usuario" Binding="{Binding PatientDisplay}" Width="*" MinWidth="185" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Concepto" Binding="{Binding Concept}" Width="170" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Periodo" Binding="{Binding Period}" Width="150" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Monto" Binding="{Binding AmountDisplay}" Width="105" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Forma" Binding="{Binding PaymentMethod}" Width="115" ElementStyle="{StaticResource GridText}"/>
+       <DataGridTextColumn Header="Saldo" Binding="{Binding RemainingBalanceDisplay}" Width="105" ElementStyle="{StaticResource GridText}"/>
+      </DataGrid.Columns>
+     </DataGrid>
+     <TextBlock x:Name="SelectedPaymentText" Grid.Row="2" Text="Aún no hay un comprobante seleccionado." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" Margin="17,11,17,13"/>
+    </Grid>
+   </Border>
+  </Grid>
+  <TextBlock x:Name="FeedbackText" Grid.Row="2" Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="2,12,2,0" AutomationProperties.LiveSetting="Polite"/>
+ </Grid>
+</UserControl>

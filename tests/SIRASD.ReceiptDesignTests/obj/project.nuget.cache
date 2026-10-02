@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "tYB2spn8heA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\A SOLAS CON DIOS A.C\\Downloads\\SIRASD_0.9_Escritorio_Etapa1\\tests\\SIRASD.ReceiptDesignTests\\SIRASD.ReceiptDesignTests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\microsoft.data.sqlite\\10.0.11\\microsoft.data.sqlite.10.0.11.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.11\\microsoft.data.sqlite.core.10.0.11.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.12\\sqlitepclraw.bundle_e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\sqlitepclraw.core\\2.1.12\\sqlitepclraw.core.2.1.12.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.12\\sqlitepclraw.lib.e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.12\\sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.11\\microsoft.netcore.app.runtime.win-x64.10.0.11.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.11\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.11.nupkg.sha512",
+    "C:\\Users\\A SOLAS CON DIOS A.C\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.11\\microsoft.aspnetcore.app.runtime.win-x64.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
